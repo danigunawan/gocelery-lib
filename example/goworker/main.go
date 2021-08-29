@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	gocelery "github.com/danigunawan/gocelery-lib/gocelery_lib"
+	gocelery "github.com/danigunawan/gocelery-lib"
 	"github.com/gomodule/redigo/redis"
 )
 

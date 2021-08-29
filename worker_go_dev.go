@@ -3,7 +3,7 @@ package gocelery_lib
 import (
 	"time"
 
-	gocelery "github.com/danigunawan/gocelery-lib/gocelery_lib"
+	gocelery "github.com/danigunawan/gocelery-lib"
 )
 
 // Celery Task

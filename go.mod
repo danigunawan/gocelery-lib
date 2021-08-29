@@ -1,4 +1,4 @@
-module github.com/danigunawan/gocelery-lib/gocelery_lib
+module github.com/danigunawan/gocelery-lib
 
 go 1.16
 

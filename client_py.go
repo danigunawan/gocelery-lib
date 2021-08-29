@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"time"
 
-	gocelery "github.com/danigunawan/gocelery-lib/gocelery_lib"
+	gocelery "github.com/danigunawan/gocelery-lib"
 )
 
 func get_value_from_multiple_return(val ...interface{}) []interface{} {

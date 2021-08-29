@@ -1,8 +1,4 @@
-// Copyright (c) 2019 Sick Yoon
-// This file is part of gocelery which is released under MIT license.
-// See file LICENSE for full license details.
-
-package main
+package gocelery_lib
 
 import (
 	"log"
@@ -10,7 +6,7 @@ import (
 	"reflect"
 	"time"
 
-	gocelery "github.com/danigunawan/gocelery-lib/gocelery_lib"
+	gocelery "github.com/danigunawan/gocelery-lib"
 	"github.com/gomodule/redigo/redis"
 )
 
