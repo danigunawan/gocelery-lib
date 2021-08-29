@@ -1,16 +1,13 @@
-// Copyright (c) 2019 Sick Yoon
-// This file is part of gocelery which is released under MIT license.
-// See file LICENSE for full license details.
-
-package gocelery
+package gocelery_lib
 
 import (
+	"context"
 	"time"
 
 	"github.com/gomodule/redigo/redis"
 )
 
-func Example_worker() {
+func Example_workerWithContext() {
 
 	// create redis connection pool
 	redisPool := &redis.Pool{
@@ -27,7 +24,7 @@ func Example_worker() {
 	cli, _ := NewCeleryClient(
 		NewRedisBroker(redisPool),
 		&RedisCeleryBackend{Pool: redisPool},
-		5, // number of workers
+		1,
 	)
 
 	// task
@@ -38,13 +35,19 @@ func Example_worker() {
 	// register task
 	cli.Register("add", add)
 
+	// context with cancelFunc to handle exit gracefully
+	ctx, cancel := context.WithCancel(context.Background())
+
 	// start workers (non-blocking call)
-	cli.StartWorker()
+	cli.StartWorkerWithContext(ctx)
 
 	// wait for client request
 	time.Sleep(10 * time.Second)
 
-	// stop workers gracefully (blocking call)
-	cli.StopWorker()
+	// stop workers by cancelling context
+	cancel()
+
+	// optional: wait for all workers to terminate
+	cli.WaitForStopWorker()
 
 }

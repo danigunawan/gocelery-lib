@@ -10,7 +10,7 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/danigunawan/go-sync-async-distributed-task/gocelery"
+	gocelery "github.com/danigunawan/gocelery-lib/gocelery_lib"
 	"github.com/gomodule/redigo/redis"
 )
 

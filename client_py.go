@@ -1,8 +1,4 @@
-// Copyright (c) 2019 Sick Yoon
-// This file is part of gocelery which is released under MIT license.
-// See file LICENSE for full license details.
-
-package gocelery
+package gocelery_lib
 
 import (
 	"fmt"
@@ -10,7 +6,7 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/danigunawan/go-sync-async-distributed-task/gocelery"
+	gocelery "github.com/danigunawan/gocelery-lib/gocelery_lib"
 )
 
 func get_value_from_multiple_return(val ...interface{}) []interface{} {

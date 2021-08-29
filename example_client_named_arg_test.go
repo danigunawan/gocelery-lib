@@ -1,8 +1,4 @@
-// Copyright (c) 2019 Sick Yoon
-// This file is part of gocelery which is released under MIT license.
-// See file LICENSE for full license details.
-
-package gocelery
+package gocelery_lib
 
 import (
 	"log"
@@ -13,8 +9,9 @@ import (
 	"github.com/gomodule/redigo/redis"
 )
 
-func Example_client() {
+func Example_clientWithNamedArguments() {
 
+	// create redis connection pool
 	// create redis connection pool
 	redisPool := &redis.Pool{
 		Dial: func() (redis.Conn, error) {
@@ -39,7 +36,13 @@ func Example_client() {
 	argB := rand.Intn(10)
 
 	// run task
-	asyncResult, err := cli.Delay(taskName, argA, argB)
+	asyncResult, err := cli.DelayKwargs(
+		taskName,
+		map[string]interface{}{
+			"a": argA,
+			"b": argB,
+		},
+	)
 	if err != nil {
 		panic(err)
 	}
