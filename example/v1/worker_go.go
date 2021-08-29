@@ -17,15 +17,15 @@ func main() {
 	// url_redis :=
 
 	// create broker and backend
-	// celeryBroker := gocelery.NewRedisCeleryBroker("redis://localhost:6379")
-	// celeryBackend := gocelery.NewRedisCeleryBackend("redis://localhost:6379")
+	// celeryBroker := gocelery_lib.NewRedisCeleryBroker("redis://localhost:6379")
+	// celeryBackend := gocelery_lib.NewRedisCeleryBackend("redis://localhost:6379")
 
 	//use AMQP instead
-	celeryBroker := gocelery.NewAMQPCeleryBroker(url_amqp)
-	celeryBackend := gocelery.NewAMQPCeleryBackend(url_amqp)
+	celeryBroker := gocelery_lib.NewAMQPCeleryBroker(url_amqp)
+	celeryBackend := gocelery_lib.NewAMQPCeleryBackend(url_amqp)
 
 	// initialize celery client
-	cli, _ := gocelery.NewCeleryClient(celeryBroker, celeryBackend, 5) // number of workers
+	cli, _ := gocelery_lib.NewCeleryClient(celeryBroker, celeryBackend, 5) // number of workers
 
 	// register task
 	cli.Register("worker_go.add", add)

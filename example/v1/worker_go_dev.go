@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/danigunawan/gocelery-lib"
 	"time"
+
+	"github.com/danigunawan/gocelery-lib"
 )
 
 // Celery Task

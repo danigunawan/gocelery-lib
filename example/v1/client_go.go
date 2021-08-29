@@ -1,4 +1,4 @@
-package gocelery_lib
+package main
 
 import (
 	"fmt"
