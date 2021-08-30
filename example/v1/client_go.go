@@ -17,14 +17,14 @@ func main() {
 	url := "amqp://guest:guest@localhost:5672/"
 
 	// // initialize celery client and configure 1 workers
-	celery_client, _ := gocelery.NewCeleryClient(
-		gocelery.NewAMQPCeleryBroker(url),
-		gocelery.NewAMQPCeleryBackend(url),
+	celery_client, _ := gocelery_lib.NewCeleryClient(
+		gocelery_lib.NewAMQPCeleryBroker(url),
+		gocelery_lib.NewAMQPCeleryBackend(url),
 		1, // number of workers
 	)
 
 	// prepare arguments
-	taskName := "worker_go.add"
+	taskName := "worker_py.add"
 	argA := 2
 	argB := 2
 
@@ -34,7 +34,7 @@ func main() {
 		fmt.Println(err)
 	}
 	fmt.Println(asyncResult)
-	fmt.Println(celery_client)
+	// fmt.Println(celery_client)
 
 	// TaskID := asyncResult.TaskID
 	// fmt.Println(get_value_from_multiple_return(asyncResult.Ready())[0])
@@ -49,12 +49,10 @@ func main() {
 	// }
 
 	// fmt.Println(asyncResult.Ready()
-	var id int = 1cfd33da-6523-4618-874e-cb8220d705c6
-	fmt.Println(AsyncResult(id))
-	
+
 	// fmt.Println(asyncResult.TaskID)
 	// fmt.Println(asyncResult.GetResult("a70e8c97-a109-40f3-8acb-49ab749e58d3"))
-	// fmt.Println(cli)
+	// fmt.Println(celery_client
 	// get results from backend with timeout
 
 	// res, err := AsyncResult.backend.GetResult(AsyncResult.TaskID)
@@ -63,18 +61,17 @@ func main() {
 	// }
 	// fmt.Println(res)
 	// queueName := strings.Replace("efbaf301-2387-44b3-beb6-b5033cc12cfa", "-", "", -1)
-	// fmt.Println(asyncResult.GetByID("efbaf301-2387-44b3-beb6-b5033cc12cfa"))
 
 	// get results from backend with timeout
 
 	// run task
-	// asyncResultID, err := gocelery.Delay("09afe5c6-5005-4250-829c-93bf3856b93d")
+	// asyncResultID, err := gocelery_lib.Delay("09afe5c6-5005-4250-829c-93bf3856b93d")
 	// if err != nil {
 	// fmt.Println(err)
 	// }
 
 	// fmt.Println("HASIL BY ID")
-	// out := asyncResult.GetByID(asyncResult.TaskID)
+	// out := gocelery_lib.AMQPCeleryBackend.GetResult("09afe5c6-5005-4250-829c-93bf3856b93d")
 	// fmt.Println(out)
 	// fmt.Println(asyncResultID)
 
@@ -86,5 +83,33 @@ func main() {
 	// }
 
 	// log.Printf("result: %+v of type %+v", res, reflect.TypeOf(res))
+
+	// testCases := []struct {
+	// 	name    string
+	// 	backend *CeleryBackend
+	// }{
+	// 	{
+	// 		name: "get result from redis backend",
+	// 	},
+	// }
+	// for _, tc := range testCases {
+	// 	taskID := uuid.Must(uuid.NewV4()).String()
+	// 	// value must be float64 for testing due to json limitation
+	// 	value := reflect.ValueOf(rand.Float64())
+	// 	resultMessage := getReflectionResultMessage(&value)
+	// 	messageBytes, err := json.Marshal(resultMessage)
+	// 	if err != nil {
+
+	// 	}
+	// 	conn := tc.backend.Get()
+	// 	defer conn.Close()
+	// 	_, err = conn.Do("SETEX", fmt.Sprintf("celery-task-meta-%s", taskID), 86400, messageBytes)
+	// 	if err != nil {
+
+	// 	}
+	// 	res, err := tc.backend.GetResult(taskID)
+	// 	if err != nil {
+
+	// 	}
 
 }

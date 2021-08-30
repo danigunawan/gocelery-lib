@@ -160,6 +160,8 @@ func (ar *AsyncResult) AsyncGet() (interface{}, error) {
 		return nil, fmt.Errorf("error response status %v", val)
 	}
 	ar.result = val
+	fmt.Println("HASIL ASYNCGET")
+	fmt.Println(val)
 	return val.Result, nil
 }
 

@@ -1,10 +1,9 @@
-package gocelery_lib
+package main
 
 import (
 	"fmt"
 	"time"
 
-	gocelery "github.com/danigunawan/gocelery-lib"
 	"github.com/gomodule/redigo/redis"
 )
 
@@ -63,9 +62,9 @@ func main() {
 	}
 
 	// initialize celery client
-	cli, _ := gocelery.NewCeleryClient(
-		gocelery.NewRedisBroker(redisPool),
-		&gocelery.RedisCeleryBackend{Pool: redisPool},
+	cli, _ := gocelery_lib.NewCeleryClient(
+		gocelery_lib.NewRedisBroker(redisPool),
+		&gocelery_lib.RedisCeleryBackend{Pool: redisPool},
 		5, // number of workers
 	)
 
